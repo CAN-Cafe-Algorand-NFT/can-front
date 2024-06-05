@@ -66,7 +66,7 @@ color: ${colors.main1};
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin-top: 2.7%;
+    margin-top: 2%;
     margin-left: -20px;
 
     @media (max-width: 390px) {
