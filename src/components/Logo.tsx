@@ -33,7 +33,7 @@ font-size: 14px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
-margin-right: -15px;
+margin-right: -10px;
 
   @media (max-width: 390px) {
     font-size: 40px;
