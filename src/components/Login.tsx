@@ -2,39 +2,33 @@
 
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import detectEthereumProvider from '@metamask/detect-provider';
-import Web3 from 'web3';
+import { PeraWalletConnect } from '@perawallet/connect';
 import { useRouter } from 'next/navigation';
 
 const Login = () => {
   const [account, setAccount] = useState(null);
   const router = useRouter();
+  const peraWallet = new PeraWalletConnect();
 
-  const handleMetaMaskLogin = async () => {
-    const provider = await detectEthereumProvider();
+  const handlePeraWalletLogin = async () => {
+    try {
+      const accounts = await peraWallet.connect();
+      setAccount(accounts[0]);
+      console.log('Logged in with Pera Wallet:', accounts[0]);
 
-    if (provider) {
-      try {
-        const accounts = await provider.request({ method: 'eth_requestAccounts' });
-        setAccount(accounts[0]);
-        const web3 = new Web3(provider);
-        console.log('Logged in with MetaMask:', accounts[0]);
-
-        // 로그인이 완료되면 home으로
-        router.push('/home');
-      } catch (error) {
-        console.error('User rejected the request:', error);
-      }
-    } else {
-      console.error('MetaMask is not installed. Please install MetaMask and try again.');
+      // 로그인이 완료되면 home으로
+      router.push('/home');
+    } catch (error) {
+      console.error('User rejected the request:', error);
     }
   };
 
   return (
     <Container>
-      <LoginButton onClick={handleMetaMaskLogin}>
-        Log in with Metamask
+      <LoginButton onClick={handlePeraWalletLogin}>
+        Log in with Pera Wallet
       </LoginButton>
+      {account && <AccountInfo>Logged in as: {account}</AccountInfo>}
     </Container>
   );
 };

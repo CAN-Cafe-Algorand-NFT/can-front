@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 
 const AccountContainer = styled.div`
@@ -30,14 +30,17 @@ const AccountEmail = styled.div`
   color: #666;
 `;
 
-const AccountInfo = () => (
-  <AccountContainer>
-    <Avatar />
-    <Info>
-      <AccountName>User Name</AccountName>
-      <AccountEmail>abc123@gmail.com</AccountEmail>
-    </Info>
-  </AccountContainer>
-);
+const AccountInfo: React.FC = () => {
+
+  return (
+    <AccountContainer>
+      <Avatar />
+      <Info>
+        <AccountName>User Name</AccountName>
+        <AccountEmail>abc123@gmail.com</AccountEmail>
+      </Info>
+    </AccountContainer>
+  );
+};
 
 export default AccountInfo;
