@@ -1,10 +1,12 @@
 "use client"
 /* eslint-disable @next/next/no-page-custom-font */
 import Head from 'next/head';
-import Layout from './layout';
 import LogoComponent from '../components/Logo';
 import Navigationbar from '@/components/layout/Navigationbar';
+import dynamic from 'next/dynamic';
+import Layout from './layout';
 
+const Login = dynamic(() => import('../components/Login'), { ssr: false });
 const HomePage = () => (
   <Layout>
     <Head>
@@ -12,6 +14,7 @@ const HomePage = () => (
     </Head>
     <LogoComponent />
     <Navigationbar />
+    <Login />
   </Layout>
 );
 
