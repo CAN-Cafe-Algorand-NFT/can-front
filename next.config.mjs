@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     env: {
-      NAVER_MAP_CLIENT_ID: process.env.NEXT_PUBLIC_CLIENT_ID,
+      NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
     },
   };
 

@@ -7,16 +7,16 @@ const Navigationbar = () => {
             <Container>
                 <Navbar>
                     <Buttons>
-                        <StyledLink href="home">
+                        <StyledLink href="/home">
                             <Image src="/assets/images/layout/home.svg" alt="home" width={30} height={41}/>
                         </StyledLink>
-                        <StyledLink href="cafe">
+                        <StyledLink href="/cafe">
                             <Image src="/assets/images/layout/cafe.svg" alt="cafe" width={30} height={41}/>
                         </StyledLink>
-                        <StyledLink href="map">
+                        <StyledLink href="/map">
                             <Image src="/assets/images/layout/map.svg" alt="map" width={30} height={41}/>
                         </StyledLink>
-                        <StyledLink href="mypage">
+                        <StyledLink href="/mypage">
                             <Image src="/assets/images/layout/my.svg" alt="my" width={30} height={41}/>
                         </StyledLink>
                     </Buttons>
