@@ -6,6 +6,7 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
+
   return (
     <html lang="en">
       <head>

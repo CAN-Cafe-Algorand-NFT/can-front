@@ -36,6 +36,8 @@ const Container = styled.div`
 `;
 
 const Navbar = styled.div`
+    bottom: 10px;
+    position: fixed;
     width: 393px;
     height: 84px;
     display: flex;
