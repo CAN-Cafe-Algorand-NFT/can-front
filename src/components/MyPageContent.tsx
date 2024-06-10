@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import AccountInfo from './AccountInfo';
 
 const ContentContainer = styled.div`
@@ -39,12 +39,16 @@ const Link = styled.a`
 const MyPageContent: React.FC = () => {
   const router = useRouter();
 
-  const handleNFTClick = (nftId: string) => {
-    router.push(`/mypage/nft/${nftId}`);
+  const handleNFTClick = () => {
+    router.push('/mypage/nft');
   };
 
-  const handleLikeClick = (likeId: string) => {
-    router.push(`/mypage/like/${likeId}`);
+  const handleLikeClick = () => {
+    router.push('/mypage/like');
+  };
+
+  const handleLogoutClick = () => {
+    router.push('/');
   };
 
   return (
@@ -52,33 +56,29 @@ const MyPageContent: React.FC = () => {
       <Section>
         <AccountInfo />
       </Section>
-      <Section>
-        <SectionTitle>My NFT</SectionTitle>
+      <Section onClick={() => handleNFTClick()}>
+        <SectionTitle>My NFT {'>'}</SectionTitle>
         <NFTGrid>
           {["1", "2", "3"].map((nftId) => (
-            <NFTItem key={nftId} onClick={() => handleNFTClick(nftId)}>
-              NFT {nftId}
+            <NFTItem key={nftId} >
             </NFTItem>
           ))}
         </NFTGrid>
       </Section>
-      <Section>
-        <SectionTitle>Like</SectionTitle>
+      <Section onClick={() => handleLikeClick()}>
+        <SectionTitle>Like {'>'}</SectionTitle>
         <NFTGrid>
           {["1", "2", "3", "4"].map((likeId) => (
-            <NFTItem key={likeId} onClick={() => handleLikeClick(likeId)}>
-              {/* <img src={`/images/cafe${likeId}.jpg`} alt={`Cafe ${likeId}`} /> */}
-              <div>Cafe Name</div>
-              <div>Anam 182-1, Seoul</div>
+            <NFTItem key={likeId} >
             </NFTItem>
           ))}
         </NFTGrid>
       </Section>
-      <Link>Go to purchase NFT</Link>
+      <Link href="https://algoxnft.com" target="_blank" rel="noopener noreferrer">Go to purchase NFT</Link>
       <Section>
-        <Link>Setting</Link>
-        <Link>Service center</Link>
-        <Link>Log out</Link>
+        {/* <Link>Service center</Link> */}
+        {/* <Link>Settings</Link> */}
+        <Link onClick={handleLogoutClick}>Log out</Link>
       </Section>
     </ContentContainer>
   );
