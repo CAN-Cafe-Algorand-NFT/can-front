@@ -5,6 +5,10 @@ import AccountInfo from './AccountInfo';
 
 const ContentContainer = styled.div`
   padding: 20px;
+  position: relative;
+  width: 375px; // 아이폰 15 프로의 CSS 픽셀 너비
+  height: 708px; // 아이폰 15 프로의 CSS 픽셀 높이
+  margin: 0 auto; // 중앙 정렬
 `;
 
 const Section = styled.div`
