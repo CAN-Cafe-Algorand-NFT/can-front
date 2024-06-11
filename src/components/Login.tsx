@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { PeraWalletConnect } from '@perawallet/connect';
 import { useRouter } from 'next/navigation';
+import { useAccount } from '../components/AccountContext';
 
 const Login = () => {
-  const [account, setAccount] = useState(null);
+  const { account, setAccount } = useAccount();
   const router = useRouter();
   const peraWallet = new PeraWalletConnect();
 

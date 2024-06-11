@@ -40,7 +40,7 @@ const MyPageContent = () => (
     </Section>
     <Section>
       <SectionTitle>My NFT</SectionTitle>
-      <NFTGrid>
+      <NFTGrid>``
         <NFTItem />
         <NFTItem />
         <NFTItem />
