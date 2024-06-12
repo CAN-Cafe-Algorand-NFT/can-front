@@ -1,4 +1,5 @@
 "use client";
+
 import Head from "next/head";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useRef } from "react";
@@ -27,7 +28,7 @@ const ResultItem = styled.div`
 
 const SearchResults: React.FC = () => {
   const searchParams = useSearchParams();
-  const query = searchParams.get("query");
+  const query = searchParams?.get("query");
   const mapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
