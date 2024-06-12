@@ -2,7 +2,7 @@
 
 import Head from "next/head";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, Suspense } from "react";
 import styled from "styled-components";
 import Layout from "../../layout";
 import Navigationbar from "@/components/layout/Navigationbar";
@@ -89,21 +89,23 @@ const SearchResults: React.FC = () => {
   }, [query]);
 
   return (
-    <Layout>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-      </Head>
-      <ResultContainer>
-        <h2>검색 결과</h2>
-        <ResultItem>
-          <h4>Cafe Name</h4>
-          <p>Anam 128-1, Seoul</p>
-        </ResultItem>
-        {/* 지도 표시 */}
-        <MapDiv id="map" ref={mapRef}></MapDiv>
-      </ResultContainer>
-      <Navigationbar />
-    </Layout>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Layout>
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        </Head>
+        <ResultContainer>
+          <h2>검색 결과</h2>
+          <ResultItem>
+            <h4>Cafe Name</h4>
+            <p>Anam 128-1, Seoul</p>
+          </ResultItem>
+          {/* 지도 표시 */}
+          <MapDiv id="map" ref={mapRef}></MapDiv>
+        </ResultContainer>
+        <Navigationbar />
+      </Layout>
+    </Suspense>
   );
 };
 
