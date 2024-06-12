@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/navigation';
@@ -40,37 +42,6 @@ const Link = styled.a`
   cursor: pointer;
 `;
 
-<<<<<<< HEAD
-const MyPageContent = () => (
-  <ContentContainer>
-    <Section>
-    <AccountInfo />
-    </Section>
-    <Section>
-      <SectionTitle>My NFT</SectionTitle>
-      <NFTGrid>``
-        <NFTItem />
-        <NFTItem />
-        <NFTItem />
-      </NFTGrid>
-    </Section>
-    <Section>
-      <SectionTitle>Like</SectionTitle>
-      <NFTGrid>
-        <NFTItem />
-        <NFTItem />
-        <NFTItem />
-      </NFTGrid>
-    </Section>
-    <Link>Go to purchase NFT</Link>
-    <Section>
-      <Link>Setting</Link>
-      <Link>Service center</Link>
-      <Link>Log out</Link>
-    </Section>
-  </ContentContainer>
-);
-=======
 const MyPageContent: React.FC = () => {
   const router = useRouter();
 
@@ -95,8 +66,7 @@ const MyPageContent: React.FC = () => {
         <SectionTitle>My NFT {'>'}</SectionTitle>
         <NFTGrid>
           {["1", "2", "3"].map((nftId) => (
-            <NFTItem key={nftId} >
-            </NFTItem>
+            <NFTItem key={nftId} />
           ))}
         </NFTGrid>
       </Section>
@@ -104,20 +74,16 @@ const MyPageContent: React.FC = () => {
         <SectionTitle>Like {'>'}</SectionTitle>
         <NFTGrid>
           {["1", "2", "3", "4"].map((likeId) => (
-            <NFTItem key={likeId} >
-            </NFTItem>
+            <NFTItem key={likeId} />
           ))}
         </NFTGrid>
       </Section>
       <Link href="https://algoxnft.com" target="_blank" rel="noopener noreferrer">Go to purchase NFT</Link>
       <Section>
-        {/* <Link>Service center</Link> */}
-        {/* <Link>Settings</Link> */}
         <Link onClick={handleLogoutClick}>Log out</Link>
       </Section>
     </ContentContainer>
   );
 };
->>>>>>> 69b69744a3735a5c8611f4acd05bbe41a1becef4
 
 export default MyPageContent;

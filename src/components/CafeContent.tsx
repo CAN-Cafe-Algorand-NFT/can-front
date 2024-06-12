@@ -26,7 +26,7 @@ const CafeContent = () => {
   };
 
   return (
-    <Container>
+    <ContentContainer>
       <SearchContainer>
         <SearchBar placeholder="Search" />
       </SearchContainer>
@@ -59,15 +59,18 @@ const CafeContent = () => {
         <Navigationbar />
       </NavigationContainer>
       <FilterSidebar isOpen={isFilterOpen} onClose={toggleFilterSidebar} onApply={applyFilters} />
-    </Container>
+    </ContentContainer>
   );
 };
 
 export default CafeContent;
 
-const Container = styled.div`
+const ContentContainer = styled.div`
   padding: 20px;
-  width: 100%;
+  position: relative;
+  width: 375px; // 아이폰 15 프로의 CSS 픽셀 너비
+  height: 708px; // 아이폰 15 프로의 CSS 픽셀 높이
+  margin: 0 auto; // 중앙 정렬
 `;
 
 const SearchContainer = styled.div`
@@ -165,7 +168,11 @@ const StyledLink = styled.a`
 const NavigationContainer = styled.div`
   position: fixed;
   bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
+  max-width: 375px;
   background: #fff;
   border-top: 1px solid #E7E7E7;
 `;
+

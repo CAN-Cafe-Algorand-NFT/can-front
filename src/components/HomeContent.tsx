@@ -4,16 +4,16 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { PeraWalletConnect } from '@perawallet/connect';
 import Link from 'next/link';
-import { IoIosArrowDown } from 'react-icons/io'; 
+import { IoIosArrowDown } from 'react-icons/io';
 import Logo1Component from './Logo1';
 import { useAccount } from './AccountContext';
-import Navigationbar from './layout/Navigationbar'; 
-import { useRouter } from 'next/navigation';  
+import Navigationbar from './layout/Navigationbar';
+import { useRouter } from 'next/navigation';
 
 const HomeContent: React.FC = () => {
   const { account, setAccount } = useAccount();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const router = useRouter(); 
+  const router = useRouter();
 
   useEffect(() => {
     if (account) {
@@ -32,8 +32,8 @@ const HomeContent: React.FC = () => {
       const peraWallet = new PeraWalletConnect();
       const accounts = await peraWallet.connect();
       setAccount(accounts[0]);
-      setIsModalOpen(false); 
-      router.push('/home'); 
+      setIsModalOpen(false);
+      router.push('/home');
     } catch (error) {
       console.error('User rejected the request:', error);
     }
@@ -44,7 +44,7 @@ const HomeContent: React.FC = () => {
   };
 
   return (
-    <Container>
+    <ContentContainer>
       <AccountInfoContainer onClick={handleAccountClick}>
         <AccountButton>
           <AccountDetails>
@@ -92,7 +92,7 @@ const HomeContent: React.FC = () => {
         </RecommendationGrid>
       </Section>
       <NavigationContainer>
-        <Navigationbar />  {}
+        <Navigationbar />
       </NavigationContainer>
 
       {isModalOpen && (
@@ -111,15 +111,18 @@ const HomeContent: React.FC = () => {
           </ModalContent>
         </ModalOverlay>
       )}
-    </Container>
+    </ContentContainer>
   );
 };
 
 export default HomeContent;
 
-const Container = styled.div`
+const ContentContainer = styled.div`
   padding: 20px;
-  width: 100%;
+  position: relative;
+  width: 375px; // 아이폰 15 프로의 CSS 픽셀 너비
+  height: 708px; // 아이폰 15 프로의 CSS 픽셀 높이
+  margin: 0 auto; // 중앙 정렬
 `;
 
 const AccountInfoContainer = styled.div`
@@ -181,7 +184,7 @@ const SectionTitle = styled.a`
   font-weight: bold;
   margin-bottom: 10px;
   font-size: 16px;
-  color: black; /* 검정색으로 스타일링 */
+  color: black;
   text-decoration: none;
   cursor: pointer;
 `;
@@ -206,8 +209,8 @@ const StyledLink = styled.a`
   display: block;
   width: 100%;
   height: 100%;
-  text-decoration: none; /* 추가: 링크 텍스트 장식 제거 */
-  color: inherit; /* 추가: 텍스트 색상 상속 */
+  text-decoration: none;
+  color: inherit;
 `;
 
 const Image = styled.img`
@@ -233,10 +236,14 @@ const CafeAddress = styled.div`
 const NavigationContainer = styled.div`
   position: fixed;
   bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
+  max-width: 375px;
   background: #fff;
   border-top: 1px solid #E7E7E7;
 `;
+
 
 const ModalOverlay = styled.div`
   position: fixed;
