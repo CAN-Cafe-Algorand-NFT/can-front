@@ -1,5 +1,3 @@
-"use client";
-
 import React from 'react';
 import { useParams } from 'next/navigation';
 import styled from 'styled-components';
@@ -27,7 +25,7 @@ const CafeDetailPage = () => {
       </Info>
       <CouponSection>
         <CouponText>
-          We'll give you a <CouponLink href="#">coupon for one free drink</CouponLink> on your first visit!
+          We&apos;ll give you a <CouponLink href="#">coupon for one free drink</CouponLink> on your first visit!
         </CouponText>
         <LevelInfo>
           <LevelTitle>Level 1</LevelTitle>
@@ -54,7 +52,7 @@ const CafeDetailPage = () => {
         </ReviewCard>
       </ReviewSection>
       <MapSection>
-      <ReviewTitle>MAP</ReviewTitle>
+        <ReviewTitle>MAP</ReviewTitle>
         <MapImage src="/images/map-image.png" alt="Map" />
       </MapSection>
     </Container>
