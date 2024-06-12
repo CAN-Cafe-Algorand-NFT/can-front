@@ -16,11 +16,8 @@
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
-<<<<<<< HEAD
     "react-icons": "^5.2.1",
-=======
     "react-router-dom": "^6.23.1",
->>>>>>> 69b69744a3735a5c8611f4acd05bbe41a1becef4
     "styled-components": "^6.1.11",
     "styled-reset": "^4.5.2",
     "web3": "^4.9.0"

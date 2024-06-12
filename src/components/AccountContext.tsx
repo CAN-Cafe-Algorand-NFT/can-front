@@ -9,7 +9,7 @@ interface AccountContextType {
 
 const AccountContext = createContext<AccountContextType | undefined>(undefined);
 
-export const AccountProvider = ({ children }: { children: ReactNode }) => {
+export const AccountProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [account, setAccount] = useState<string | null>(null);
 
   return (
@@ -19,7 +19,7 @@ export const AccountProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export const useAccount = () => {
+export const useAccount = (): AccountContextType => {
   const context = useContext(AccountContext);
   if (context === undefined) {
     throw new Error('useAccount must be used within an AccountProvider');

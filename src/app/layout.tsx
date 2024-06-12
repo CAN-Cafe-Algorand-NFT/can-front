@@ -2,17 +2,13 @@
 
 import { ReactNode } from 'react';
 import GlobalStyle from '../styles/global';
-<<<<<<< HEAD
 import { AccountProvider } from '../components/AccountContext';
-=======
->>>>>>> 69b69744a3735a5c8611f4acd05bbe41a1becef4
 
 interface LayoutProps {
   children: ReactNode;
 }
 
 const Layout = ({ children }: LayoutProps) => {
-
   return (
     <html lang="en">
       <head>

@@ -4,18 +4,23 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { PeraWalletConnect } from '@perawallet/connect';
 import Link from 'next/link';
-import { IoIosArrowDown } from 'react-icons/io'; // Importing arrow down icon
+import { IoIosArrowDown } from 'react-icons/io'; 
 import Logo1Component from './Logo1';
 import { useAccount } from './AccountContext';
-import Navigationbar from './layout/Navigationbar';  // Navigationbar를 import 합니다
+import Navigationbar from './layout/Navigationbar'; 
+import { useRouter } from 'next/navigation';  
 
-const HomeContent = () => {
+const HomeContent: React.FC = () => {
   const { account, setAccount } = useAccount();
-  const [clientSideAccount, setClientSideAccount] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const router = useRouter(); 
 
   useEffect(() => {
-    setClientSideAccount(account);
+    if (account) {
+      console.log('Account is connected:', account);
+    } else {
+      console.log('No account connected');
+    }
   }, [account]);
 
   const handleAccountClick = () => {
@@ -27,8 +32,8 @@ const HomeContent = () => {
       const peraWallet = new PeraWalletConnect();
       const accounts = await peraWallet.connect();
       setAccount(accounts[0]);
-      setClientSideAccount(accounts[0]);
-      setIsModalOpen(false); // Close the modal after changing the wallet
+      setIsModalOpen(false); 
+      router.push('/home'); 
     } catch (error) {
       console.error('User rejected the request:', error);
     }
@@ -44,7 +49,7 @@ const HomeContent = () => {
         <AccountButton>
           <AccountDetails>
             <AccountLabel>Account1</AccountLabel>
-            {clientSideAccount ? clientSideAccount : 'INH6KTPSCJRNX...2CLBD7MT6G37C4'}
+            {account ? account : 'INH6KTPSCJRNX...2CLBD7MT6G37C4'}
           </AccountDetails>
           <ArrowIcon>
             <IoIosArrowDown />
@@ -87,7 +92,7 @@ const HomeContent = () => {
         </RecommendationGrid>
       </Section>
       <NavigationContainer>
-        <Navigationbar />  {/* Navigationbar를 추가합니다 */}
+        <Navigationbar />  {}
       </NavigationContainer>
 
       {isModalOpen && (
@@ -98,7 +103,7 @@ const HomeContent = () => {
                 <AccountCircle />
                 <AccountText>
                   <div>Account 1</div>
-                  <div>{clientSideAccount}</div>
+                  <div>{account}</div>
                 </AccountText>
               </AccountDetails>
             </ModalHeader>
