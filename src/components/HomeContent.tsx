@@ -49,7 +49,7 @@ const HomeContent: React.FC = () => {
         <AccountButton>
           <AccountDetails>
             <AccountLabel>Account1</AccountLabel>
-            {account ? account : 'INH6KTPSCJRNX...2CLBD7MT6G37C4'}
+            {account || 'INH6KTPSCJRNX...2CLBD7MT6G37C4'}
           </AccountDetails>
           <ArrowIcon>
             <IoIosArrowDown />
