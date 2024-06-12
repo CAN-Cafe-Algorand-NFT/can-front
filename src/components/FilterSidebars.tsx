@@ -6,25 +6,33 @@ import styled from 'styled-components';
 interface FilterSidebarProps {
   isOpen: boolean;
   onClose: () => void;
-  onApply: (filters: { location: string; type: string; service: string }) => void;
+  onApply: (filters: Filters) => void;
 }
 
+interface Filters {
+  location: string;
+  type: string;
+  service: string;
+}
+
+type FilterCategory = keyof Filters;
+
 const FilterSidebar: React.FC<FilterSidebarProps> = ({ isOpen, onClose, onApply }) => {
-  const [filters, setFilters] = useState({ location: '', type: '', service: '' });
+  const [filters, setFilters] = useState<Filters>({ location: '', type: '', service: '' });
 
   const handleApply = () => {
     onApply(filters);
     onClose();
   };
 
-  const selectFilter = (category: string, value: string) => {
+  const selectFilter = (category: FilterCategory, value: string) => {
     setFilters((prevFilters) => ({
       ...prevFilters,
       [category]: prevFilters[category] === value ? '' : value,
     }));
   };
 
-  const isSelected = (category: string, value: string) => filters[category] === value;
+  const isSelected = (category: FilterCategory, value: string) => filters[category] === value;
 
   if (!isOpen) return null;
 
