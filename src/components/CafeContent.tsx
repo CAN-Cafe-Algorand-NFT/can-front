@@ -7,6 +7,12 @@ import Navigationbar from './layout/Navigationbar';
 import { recommendations } from './recommendationData'; 
 import FilterSidebar from './FilterSidebars'; 
 
+interface Filters {
+  location?: string;
+  type?: string;
+  service?: string;
+}
+
 const CafeContent = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [filteredCafes, setFilteredCafes] = useState(recommendations);
@@ -15,7 +21,7 @@ const CafeContent = () => {
     setIsFilterOpen(!isFilterOpen);
   };
 
-  const applyFilters = (filters) => {
+  const applyFilters = (filters: Filters) => {
     const filtered = recommendations.filter(cafe => {
       const matchLocation = filters.location ? cafe.location === filters.location || filters.location === 'All' : true;
       const matchType = filters.type ? cafe.type === filters.type : true;
@@ -175,4 +181,3 @@ const NavigationContainer = styled.div`
   background: #fff;
   border-top: 1px solid #E7E7E7;
 `;
-
