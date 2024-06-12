@@ -6,7 +6,13 @@ import styled from 'styled-components';
 import { recommendations } from '../../../components/recommendationData';
 
 const CafeDetailPage = () => {
-  const { id } = useParams();
+  const params = useParams();
+  const id = params?.id;
+  
+  if (!id || Array.isArray(id)) {
+    return <p>Invalid ID</p>;
+  }
+
   const cafe = recommendations.find((c) => c.id === Number(id));
 
   if (!cafe) {
